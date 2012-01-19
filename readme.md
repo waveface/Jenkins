@@ -12,6 +12,7 @@ For the next time you need to update Jenkins settings, you can just update it in
 *Windows*
 	TODO windows instructions HERE
 
+Reference [Administering Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Administering+Jenkins).
 Inspired by [homebrew](http://mxcl.github.com/homebrew/). 
 
 -jsa
