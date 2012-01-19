@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <hudson.triggers.TimerTrigger>
+      <spec>0 8 * * 0-5</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>pushd $WORKSPACE/Wammer-Cloud/
+vagrant destroy
+popd</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>python -u $WORKSPACE/Wammer-Cloud/vagrant/ci_flow.py</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 2222 -i /Library/Ruby/Gems/1.8/gems/vagrant-0.8.7/keys/vagrant vagrant@localhost &quot;/home/wammer/Wammer-Cloud/automation/testsuites/run wammerApi --with-xunit --xunit-file=../../nosetests_auto.xml&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.tasks.junit.JUnitResultArchiver>
+      <testResults>Wammer-Cloud/nosetests*.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <testDataPublishers/>
+    </hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.tasks.Mailer>
+      <recipients>kevin.chiu@waveface.com tj.sheu@waveface.com steven.shen@waveface.com dorian.lu@waveface.com camge.lo@waveface.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
+  <buildWrappers/>
+</project>
