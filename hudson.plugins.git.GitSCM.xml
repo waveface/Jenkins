@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson.plugins.git.GitSCM_-DescriptorImpl>
   <helpRedirect/>
-  <generation>7</generation>
+  <generation>22</generation>
   <globalConfigName>Waveface CI</globalConfigName>
   <globalConfigEmail>surfers+wfci@waveface.com</globalConfigEmail>
 </hudson.plugins.git.GitSCM_-DescriptorImpl>

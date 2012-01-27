@@ -15,7 +15,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/ev-feature/due-build-process</name>
+        <name>origin/master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <recursiveSubmodules>false</recursiveSubmodules>
@@ -41,19 +41,24 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers class="vector">
-    <hudson.triggers.TimerTrigger>
-      <spec>0 * */1 * *</spec>
-    </hudson.triggers.TimerTrigger>
     <hudson.triggers.SCMTrigger>
-      <spec></spec>
+      <spec>* * * * *</spec>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command># ssh -vT git@github.com</command>
+      <command>curl https://raw.github.com/gist/d80d05923582df751c0d/fe5ea28a5d3bec05e3731eafa9113e093bc5fa99/environment.sh &gt; external/IRDeployment/environment.sh
+
+external/IRDeployment/deploy.sh</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.Mailer>
+      <recipients>ev@waveface.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
   <buildWrappers/>
 </project>
