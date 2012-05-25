@@ -18,3 +18,5 @@ jobs/*/svnexternals.txt
 jobs/*/workspace*/
 
 war/
+
+.DS_Store
