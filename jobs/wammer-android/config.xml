@@ -40,14 +40,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector">
-    <hudson.triggers.TimerTrigger>
-      <spec>0 0 * * *</spec>
-    </hudson.triggers.TimerTrigger>
-    <hudson.triggers.SCMTrigger>
-      <spec>0 */1 * * *</spec>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Ant>
@@ -55,9 +48,19 @@
       <properties>sdk.dir=/Users/waveface/android-sdk/android-sdk-mac_x86</properties>
     </hudson.tasks.Ant>
     <hudson.tasks.Shell>
-      <command>cp bin/wammer-debug.apk /Users/waveface/Dropbox/Public/waveface-android/wammer-debug-${BUILD_ID}.apk
-cp bin/wammer-debug.apk /Users/waveface/Dropbox/Public/waveface-android/wammer-debug-current.apk
-find /Users/waveface/Dropbox/Public/waveface-android/ -mtime +5 -exec rm {} \;</command>
+      <command>cp bin/wammer-debug.apk /Users/waveface/Dropbox/Public/waveface-android/wammer-debug-current.apk
+cp installer.json /Users/waveface/Dropbox/Public/waveface-android/installer.json
+#find /Users/waveface/Dropbox/Public/waveface-android/ -mtime +5 -exec rm {} \;</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>cd ${WORKSPACE}
+# Delete old tag
+git tag -d jenkins-wammer-android-${BUILD_NUMBER}
+
+# Create new tag
+git tag -a robot_${BUILD_NUMBER} -m &apos;robot_${BUILD_NUMBER}&apos;
+
+git push origin robot_${BUILD_NUMBER}</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
