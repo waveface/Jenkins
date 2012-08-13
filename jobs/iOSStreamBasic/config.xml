@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
+        <refspec></refspec>
+        <url>file:///Volumes/Backpack/Heroes/jsa/Developer/Stream/</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/jsa-feature/ForJenkins*</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <disableSubmodules>false</disableSubmodules>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <remotePoll>false</remotePoll>
+    <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <reference></reference>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <includedRegions></includedRegions>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <hudson.triggers.SCMTrigger>
+      <spec>* * * * *</spec>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <au.com.rayh.XCodeBuilder>
+      <cleanBeforeBuild>false</cleanBeforeBuild>
+      <cleanTestReports>false</cleanTestReports>
+      <configuration>Debug</configuration>
+      <target>wammer-iOS</target>
+      <sdk>iphoneos</sdk>
+      <symRoot></symRoot>
+      <configurationBuildDir></configurationBuildDir>
+      <xcodeProjectPath></xcodeProjectPath>
+      <xcodeProjectFile></xcodeProjectFile>
+      <xcodebuildArguments></xcodebuildArguments>
+      <xcodeSchema></xcodeSchema>
+      <xcodeWorkspaceFile></xcodeWorkspaceFile>
+      <embeddedProfileFile></embeddedProfileFile>
+      <cfBundleVersionValue></cfBundleVersionValue>
+      <cfBundleShortVersionStringValue></cfBundleShortVersionStringValue>
+      <buildIpa>false</buildIpa>
+      <unlockKeychain>false</unlockKeychain>
+      <keychainPath></keychainPath>
+      <keychainPwd></keychainPwd>
+    </au.com.rayh.XCodeBuilder>
+  </builders>
+  <publishers>
+    <hudson.tasks.Mailer>
+      <recipients>jamie@waveface.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
+  <buildWrappers/>
+</project>
