@@ -20,9 +20,13 @@ Inspired by [homebrew](http://mxcl.github.com/homebrew/).
 #References
 
 ##To Setup Jenkins for iOS
-http://lifeandcode.net/2011/12/automated-ios-jenkins-builds-with-application-tests-and-core-data/
-http://www.infinite-loop.dk/blog/2012/02/code-coverage-and-fopen-unix2003-problems/
+
+1. http://lifeandcode.net/2011/12/automated-ios-jenkins-builds-with-application-tests-and-core-data/
+1. http://www.infinite-loop.dk/blog/2012/02/code-coverage-and-fopen-unix2003-problems/
 
 ##Coverage for iOS
-http://www.infinite-loop.dk/blog/2011/12/code-coverage-with-xcode-4-2/
-http://hamishrickerby.com/2012/04/05/unit-test-code-coverage-with-xcode-4-dot-3-2/
+
+    pip install gcovr
+
+1. http://www.infinite-loop.dk/blog/2011/12/code-coverage-with-xcode-4-2/
+1. http://hamishrickerby.com/2012/04/05/unit-test-code-coverage-with-xcode-4-dot-3-2/
