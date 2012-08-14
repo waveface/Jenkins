@@ -10,12 +10,12 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name>origin</name>
         <refspec></refspec>
-        <url>file:///Volumes/Backpack/Heroes/jsa/Developer/Stream/</url>
+        <url>git@github.com:waveface/wammer-iOS.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/jsa-feature/ForJenkins*</name>
+        <name>origin/develop*</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <disableSubmodules>false</disableSubmodules>
@@ -96,6 +96,7 @@
     <hudson.tasks.Shell>
       <command>bash tools/send-to-testflight.sh
 
+mkdir -p cobertura-report
 gcovr --branches --xml --output=cobertura-report/coverage.xml</command>
     </hudson.tasks.Shell>
   </builders>
