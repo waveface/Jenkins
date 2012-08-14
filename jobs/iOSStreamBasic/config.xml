@@ -52,7 +52,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <au.com.rayh.XCodeBuilder>
-      <cleanBeforeBuild>false</cleanBeforeBuild>
+      <cleanBeforeBuild>true</cleanBeforeBuild>
       <cleanTestReports>false</cleanTestReports>
       <configuration>Debug</configuration>
       <target>wammer-iOS</target>
@@ -67,7 +67,7 @@
       <embeddedProfileFile></embeddedProfileFile>
       <cfBundleVersionValue></cfBundleVersionValue>
       <cfBundleShortVersionStringValue></cfBundleShortVersionStringValue>
-      <buildIpa>false</buildIpa>
+      <buildIpa>true</buildIpa>
       <unlockKeychain>false</unlockKeychain>
       <keychainPath></keychainPath>
       <keychainPwd></keychainPwd>
@@ -93,6 +93,9 @@
       <keychainPath>${HOME}/Library/Keychains/login.keychain</keychainPath>
       <keychainPwd></keychainPwd>
     </au.com.rayh.XCodeBuilder>
+    <hudson.tasks.Shell>
+      <command>bash tools/send-to-testflight.sh</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.junit.JUnitResultArchiver>
