@@ -54,7 +54,7 @@
     <au.com.rayh.XCodeBuilder>
       <cleanBeforeBuild>true</cleanBeforeBuild>
       <cleanTestReports>false</cleanTestReports>
-      <configuration>Debug</configuration>
+      <configuration>Release</configuration>
       <target>wammer-iOS</target>
       <sdk>iphoneos</sdk>
       <symRoot></symRoot>
@@ -75,7 +75,7 @@
     <au.com.rayh.XCodeBuilder>
       <cleanBeforeBuild>false</cleanBeforeBuild>
       <cleanTestReports>false</cleanTestReports>
-      <configuration>Debug</configuration>
+      <configuration>Release</configuration>
       <target>wammer-iOS-Test</target>
       <sdk>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/</sdk>
       <symRoot></symRoot>
@@ -106,31 +106,15 @@ gcovr --branches --xml --output=cobertura-report/coverage.xml</command>
       <healthyTarget>
         <targets class="enum-map" enum-type="hudson.plugins.cobertura.targets.CoverageMetric">
           <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>CONDITIONAL</hudson.plugins.cobertura.targets.CoverageMetric>
-            <int>70</int>
-          </entry>
-          <entry>
             <hudson.plugins.cobertura.targets.CoverageMetric>LINE</hudson.plugins.cobertura.targets.CoverageMetric>
-            <int>80</int>
-          </entry>
-          <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>METHOD</hudson.plugins.cobertura.targets.CoverageMetric>
-            <int>80</int>
+            <int>70</int>
           </entry>
         </targets>
       </healthyTarget>
       <unhealthyTarget>
         <targets class="enum-map" enum-type="hudson.plugins.cobertura.targets.CoverageMetric">
           <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>CONDITIONAL</hudson.plugins.cobertura.targets.CoverageMetric>
-            <int>0</int>
-          </entry>
-          <entry>
             <hudson.plugins.cobertura.targets.CoverageMetric>LINE</hudson.plugins.cobertura.targets.CoverageMetric>
-            <int>0</int>
-          </entry>
-          <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>METHOD</hudson.plugins.cobertura.targets.CoverageMetric>
             <int>0</int>
           </entry>
         </targets>
@@ -138,15 +122,7 @@ gcovr --branches --xml --output=cobertura-report/coverage.xml</command>
       <failingTarget>
         <targets class="enum-map" enum-type="hudson.plugins.cobertura.targets.CoverageMetric">
           <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>CONDITIONAL</hudson.plugins.cobertura.targets.CoverageMetric>
-            <int>0</int>
-          </entry>
-          <entry>
             <hudson.plugins.cobertura.targets.CoverageMetric>LINE</hudson.plugins.cobertura.targets.CoverageMetric>
-            <int>0</int>
-          </entry>
-          <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>METHOD</hudson.plugins.cobertura.targets.CoverageMetric>
             <int>0</int>
           </entry>
         </targets>
