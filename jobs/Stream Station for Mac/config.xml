@@ -15,7 +15,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/develop*</name>
+        <name>origin/develop</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <disableSubmodules>false</disableSubmodules>
@@ -50,6 +50,15 @@
     <hudson.tasks.Shell>
       <command>sh vendors/mac/scripts/clean.sh
 sh vendors/mac/build.sh</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>cd &quot;${WORKSPACE}&quot;
+
+# Create new tag
+git tag -a robot_${BUILD_NUMBER} -m &apos;robot_${BUILD_NUMBER}&apos;
+git push origin robot_${BUILD_NUMBER}
+
+scp -i &quot;$HOME/.ssh/surfers+wfci@waveface.com&quot;  &quot;vendors/mac/Stream Station-1.0.0.${BUILD_NUMBER}.dmg&quot; wammer@develop.waveface.com:~/station/</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
