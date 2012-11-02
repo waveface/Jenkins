@@ -4,7 +4,7 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.25">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -27,6 +27,7 @@
     <pruneBranches>false</pruneBranches>
     <remotePoll>false</remotePoll>
     <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
     <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
     <gitTool>Default</gitTool>
     <submoduleCfg class="list"/>
@@ -51,19 +52,19 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <au.com.rayh.XCodeBuilder>
+    <au.com.rayh.XCodeBuilder plugin="xcode-plugin@1.3.1">
       <cleanBeforeBuild>true</cleanBeforeBuild>
       <cleanTestReports>false</cleanTestReports>
-      <configuration>Release</configuration>
+      <configuration>Debug</configuration>
       <target>wammer-iOS</target>
       <sdk>iphoneos</sdk>
-      <symRoot></symRoot>
+      <symRoot>${workspace}/build/wammer/Build/Products</symRoot>
       <configurationBuildDir></configurationBuildDir>
       <xcodeProjectPath></xcodeProjectPath>
       <xcodeProjectFile></xcodeProjectFile>
       <xcodebuildArguments></xcodebuildArguments>
-      <xcodeSchema></xcodeSchema>
-      <xcodeWorkspaceFile></xcodeWorkspaceFile>
+      <xcodeSchema>wammer-iOS</xcodeSchema>
+      <xcodeWorkspaceFile>wammer</xcodeWorkspaceFile>
       <embeddedProfileFile></embeddedProfileFile>
       <cfBundleVersionValue></cfBundleVersionValue>
       <cfBundleShortVersionStringValue></cfBundleShortVersionStringValue>
@@ -72,19 +73,40 @@
       <keychainPath></keychainPath>
       <keychainPwd></keychainPwd>
     </au.com.rayh.XCodeBuilder>
-    <au.com.rayh.XCodeBuilder>
+    <au.com.rayh.XCodeBuilder plugin="xcode-plugin@1.3.1">
       <cleanBeforeBuild>false</cleanBeforeBuild>
       <cleanTestReports>false</cleanTestReports>
-      <configuration>Release</configuration>
-      <target>wammer-iOS-Test</target>
-      <sdk>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/</sdk>
-      <symRoot></symRoot>
+      <configuration>Debug</configuration>
+      <target>LogicTests</target>
+      <sdk>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/</sdk>
+      <symRoot>${workspace}/build/wammer/Build/Products</symRoot>
       <configurationBuildDir></configurationBuildDir>
       <xcodeProjectPath></xcodeProjectPath>
       <xcodeProjectFile></xcodeProjectFile>
       <xcodebuildArguments></xcodebuildArguments>
-      <xcodeSchema></xcodeSchema>
-      <xcodeWorkspaceFile></xcodeWorkspaceFile>
+      <xcodeSchema>wammer-iOS</xcodeSchema>
+      <xcodeWorkspaceFile>wammer</xcodeWorkspaceFile>
+      <embeddedProfileFile></embeddedProfileFile>
+      <cfBundleVersionValue></cfBundleVersionValue>
+      <cfBundleShortVersionStringValue></cfBundleShortVersionStringValue>
+      <buildIpa>false</buildIpa>
+      <unlockKeychain>false</unlockKeychain>
+      <keychainPath>${HOME}/Library/Keychains/login.keychain</keychainPath>
+      <keychainPwd></keychainPwd>
+    </au.com.rayh.XCodeBuilder>
+    <au.com.rayh.XCodeBuilder plugin="xcode-plugin@1.3.1">
+      <cleanBeforeBuild>false</cleanBeforeBuild>
+      <cleanTestReports>false</cleanTestReports>
+      <configuration>Debug</configuration>
+      <target>ApplicationTests</target>
+      <sdk>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/</sdk>
+      <symRoot>${workspace}/build/wammer/Build/Products</symRoot>
+      <configurationBuildDir></configurationBuildDir>
+      <xcodeProjectPath></xcodeProjectPath>
+      <xcodeProjectFile></xcodeProjectFile>
+      <xcodebuildArguments></xcodebuildArguments>
+      <xcodeSchema>wammer-iOS</xcodeSchema>
+      <xcodeWorkspaceFile>wammer</xcodeWorkspaceFile>
       <embeddedProfileFile></embeddedProfileFile>
       <cfBundleVersionValue></cfBundleVersionValue>
       <cfBundleShortVersionStringValue></cfBundleShortVersionStringValue>
@@ -101,7 +123,7 @@ gcovr --branches --xml --output=cobertura-report/coverage.xml</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.cobertura.CoberturaPublisher>
+    <hudson.plugins.cobertura.CoberturaPublisher plugin="cobertura@1.7.1">
       <coberturaReportFile>cobertura-report/*.xml</coberturaReportFile>
       <onlyStable>true</onlyStable>
       <failUnhealthy>false</failUnhealthy>
@@ -111,7 +133,7 @@ gcovr --branches --xml --output=cobertura-report/coverage.xml</command>
       <healthyTarget>
         <targets class="enum-map" enum-type="hudson.plugins.cobertura.targets.CoverageMetric">
           <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>LINE</hudson.plugins.cobertura.targets.CoverageMetric>
+            <hudson.plugins.cobertura.targets.CoverageMetric>CLASSES</hudson.plugins.cobertura.targets.CoverageMetric>
             <int>7000000</int>
           </entry>
         </targets>
@@ -119,7 +141,7 @@ gcovr --branches --xml --output=cobertura-report/coverage.xml</command>
       <unhealthyTarget>
         <targets class="enum-map" enum-type="hudson.plugins.cobertura.targets.CoverageMetric">
           <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>LINE</hudson.plugins.cobertura.targets.CoverageMetric>
+            <hudson.plugins.cobertura.targets.CoverageMetric>CLASSES</hudson.plugins.cobertura.targets.CoverageMetric>
             <int>0</int>
           </entry>
         </targets>
@@ -127,7 +149,7 @@ gcovr --branches --xml --output=cobertura-report/coverage.xml</command>
       <failingTarget>
         <targets class="enum-map" enum-type="hudson.plugins.cobertura.targets.CoverageMetric">
           <entry>
-            <hudson.plugins.cobertura.targets.CoverageMetric>LINE</hudson.plugins.cobertura.targets.CoverageMetric>
+            <hudson.plugins.cobertura.targets.CoverageMetric>CLASSES</hudson.plugins.cobertura.targets.CoverageMetric>
             <int>0</int>
           </entry>
         </targets>
