@@ -61,7 +61,7 @@
       <symRoot>${workspace}/build/wammer/Build/Products</symRoot>
       <configurationBuildDir></configurationBuildDir>
       <xcodeProjectPath></xcodeProjectPath>
-      <xcodeProjectFile></xcodeProjectFile>
+      <xcodeProjectFile>wammer</xcodeProjectFile>
       <xcodebuildArguments></xcodebuildArguments>
       <xcodeSchema>wammer-iOS</xcodeSchema>
       <xcodeWorkspaceFile>wammer</xcodeWorkspaceFile>
@@ -82,7 +82,7 @@
       <symRoot>${workspace}/build/wammer/Build/Products</symRoot>
       <configurationBuildDir></configurationBuildDir>
       <xcodeProjectPath></xcodeProjectPath>
-      <xcodeProjectFile></xcodeProjectFile>
+      <xcodeProjectFile>wammer</xcodeProjectFile>
       <xcodebuildArguments></xcodebuildArguments>
       <xcodeSchema>wammer-iOS</xcodeSchema>
       <xcodeWorkspaceFile>wammer</xcodeWorkspaceFile>
@@ -103,7 +103,7 @@
       <symRoot>${workspace}/build/wammer/Build/Products</symRoot>
       <configurationBuildDir></configurationBuildDir>
       <xcodeProjectPath></xcodeProjectPath>
-      <xcodeProjectFile></xcodeProjectFile>
+      <xcodeProjectFile>wammer</xcodeProjectFile>
       <xcodebuildArguments></xcodebuildArguments>
       <xcodeSchema>wammer-iOS</xcodeSchema>
       <xcodeWorkspaceFile>wammer</xcodeWorkspaceFile>
