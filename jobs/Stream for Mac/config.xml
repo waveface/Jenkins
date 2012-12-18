@@ -2,9 +2,15 @@
 <project>
   <actions/>
   <description></description>
+  <logRotator>
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>20</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.25">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -19,7 +25,7 @@
       </hudson.plugins.git.BranchSpec>
     </branches>
     <disableSubmodules>false</disableSubmodules>
-    <recursiveSubmodules>false</recursiveSubmodules>
+    <recursiveSubmodules>true</recursiveSubmodules>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <authorOrCommitter>false</authorOrCommitter>
     <clean>false</clean>
@@ -27,6 +33,7 @@
     <pruneBranches>false</pruneBranches>
     <remotePoll>false</remotePoll>
     <ignoreNotifyCommit>false</ignoreNotifyCommit>
+    <useShallowClone>false</useShallowClone>
     <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
     <gitTool>Default</gitTool>
     <submoduleCfg class="list"/>
@@ -48,7 +55,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>sh vendors/mac/scripts/clean.sh
+      <command>sh vendors/mac/scripts/clean.sh cleanall
 sh vendors/mac/build.sh</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -58,13 +65,13 @@ sh vendors/mac/build.sh</command>
 git tag -a robot_${BUILD_NUMBER} -m &apos;robot_${BUILD_NUMBER}&apos;
 git push origin robot_${BUILD_NUMBER}
 
-scp -i &quot;$HOME/.ssh/surfers+wfci@waveface.com&quot;  &quot;vendors/mac/Stream Station-1.0.0.${BUILD_NUMBER}.dmg&quot; wammer@develop.waveface.com:~/station/</command>
+scp -i &quot;$HOME/.ssh/surfers+wfci@waveface.com&quot;  &quot;vendors/mac/Stream-1.0.0.${BUILD_NUMBER}-dev.dmg&quot; wammer@develop.waveface.com:~/station/</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>vendors/mac/*.dmg</artifacts>
-      <latestOnly>false</latestOnly>
+      <latestOnly>true</latestOnly>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>
